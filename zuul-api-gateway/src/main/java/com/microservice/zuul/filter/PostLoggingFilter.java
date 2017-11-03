@@ -1,46 +1,59 @@
+/**
+ *
+ */
 package com.microservice.zuul.filter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.stereotype.Component;
-
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 
-@Component
-public class PreLoggingFilter extends ZuulFilter {
+/**
+ * @author Chetan
+ *
+ */
+public class PostLoggingFilter extends ZuulFilter {
 
-	/**
-	 * 0 is the first order.
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see com.netflix.zuul.ZuulFilter#filterOrder()
 	 */
 	@Override
 	public int filterOrder() {
+		// TODO Auto-generated method stub
 		return 0;
 	}
 
-	/**
-	 * pre means before calling internal service. post means after calling
-	 * internal service.
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see com.netflix.zuul.ZuulFilter#filterType()
 	 */
 	@Override
 	public String filterType() {
-		return "pre";
+		return "post";
 	}
 
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see com.netflix.zuul.IZuulFilter#run()
+	 */
 	@Override
 	public Object run() {
 		HttpServletRequest request = RequestContext.getCurrentContext().getRequest();
 		HttpServletResponse response = RequestContext.getCurrentContext().getResponse();
-		System.out.println("PRE Request Object: " + request.getRequestURI());
+		System.out.println("POST Request Object: " + request.getRequestURI());
 		if (response != null) {
-			System.out.println("PRE Response Object: " + response.toString());
+			System.out.println("POST Response Object: " + response.toString());
 		}
 		return null;
 	}
 
 	/**
-	 * Return true to use this filter
+	 * Should apply this filter
 	 */
 	@Override
 	public boolean shouldFilter() {
