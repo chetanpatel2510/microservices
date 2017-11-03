@@ -1,0 +1,14 @@
+# Set Application Name
+spring:
+  application:
+    name: config
+    
+# Set Server port
+server:
+  port: ${PORT:8081}
+  
+# Information about Eureka Server
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.1:8761/eureka/

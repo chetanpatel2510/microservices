@@ -5,17 +5,17 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 /**
- * This service will work as config server as well as eureka client. This will
+ * This is product service which will provide product details. This will
  * register itself as eureka client to eureka server.
- *
+ * 
  * @author Chetan
  *
  */
 @EnableEurekaClient
 @SpringBootApplication
-public class ConfigApplication {
+public class ProductServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ConfigApplication.class, args);
+		SpringApplication.run(ProductServiceApplication.class, args);
 	}
 }
