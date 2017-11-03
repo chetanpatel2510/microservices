@@ -6,13 +6,19 @@ package com.microservice.zuul.filter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.stereotype.Component;
+
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 
 /**
+ * This is post logging filter which is executed after actual processing of
+ * request by internal service.
+ * 
  * @author Chetan
  *
  */
+@Component
 public class PostLoggingFilter extends ZuulFilter {
 
 	/*

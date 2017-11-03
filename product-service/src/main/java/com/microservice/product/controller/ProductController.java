@@ -20,6 +20,7 @@ public class ProductController {
 
 	@RequestMapping(value = "/getProductById/{id}", method = RequestMethod.GET)
 	public Product getProductById(@PathVariable Long id) {
+		System.out.println("Calling get Product By Id");
 		Product product = new Product();
 		product.setId(id);
 		product.setName("Sample Product Name");

@@ -8,6 +8,13 @@ import org.springframework.stereotype.Component;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 
+/**
+ * This is PRE logging filter which is called before actual processing of
+ * request by internal service.
+ * 
+ * @author Chetan
+ *
+ */
 @Component
 public class PreLoggingFilter extends ZuulFilter {
 
