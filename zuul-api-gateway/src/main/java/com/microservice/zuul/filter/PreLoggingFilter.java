@@ -9,7 +9,7 @@ import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 
 @Component
-public class LoggingFilter extends ZuulFilter {
+public class PreLoggingFilter extends ZuulFilter {
 
 	/**
 	 * 0 is the first order.
