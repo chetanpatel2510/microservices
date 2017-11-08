@@ -11,7 +11,7 @@ spring:
       server:
         git:
           search-paths:
-          - /config/**
+          - /config/**/config/
           uri: https://github.com/chetanpatel2510/microservices
         native:
           search-locations:
@@ -19,7 +19,7 @@ spring:
 
 # Set Server port
 server:
-  port: ${PORT:8082}
+  port: ${PORT:9000}
   
 # Information about Eureka Server
 eureka:         #tells about the Eureka server details and its refresh time

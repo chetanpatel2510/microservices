@@ -1,6 +1,6 @@
 # Set Server port
 server:
-  port: 0
+  port: 8082
   
 eureka:         #tells about the Eureka server details and its refresh time
   instance:

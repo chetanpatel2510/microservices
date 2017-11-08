@@ -1,0 +1,10 @@
+# Set Application Name
+spring:
+  application:
+    name: order-service
+    
+# Set Server port
+server:
+  port: 8081
+  
+  
