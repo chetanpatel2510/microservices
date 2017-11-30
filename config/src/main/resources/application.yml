@@ -11,7 +11,7 @@ spring:
       server:
         git:
           search-paths:
-          - /config/**/config/
+          - /config/**
           uri: https://github.com/chetanpatel2510/microservices
         native:
           search-locations:

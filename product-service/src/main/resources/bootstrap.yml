@@ -9,11 +9,7 @@ eureka:         #tells about the Eureka server details and its refresh time
   client:
     serviceUrl:
       defaultZone: http://127.0.0.1:8761/eureka/
-  healthcheck:
-    enabled: true
-  lease:
-    duration: 5
-      
+  
 # Set Application Name
 spring:
   application:
@@ -33,5 +29,5 @@ management:
  
 logging:
   level:
-    com.eureka: DEBUG
+    com.microservice: DEBUG
   
