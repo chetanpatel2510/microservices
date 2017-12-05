@@ -1,0 +1,41 @@
+# Set Application Name
+spring:
+  application:
+    name: config
+  profiles:
+    active: dev 
+  cloud:
+    config:
+      allow-override: true # Default true
+      override-none: true # Default false
+      name: product-service
+      enabled: true
+      server:
+        git:
+          search-paths:
+          - /config/**
+          uri: https://github.com/chetanpatel2510/microservices
+        native:
+          search-locations:
+            -classpath:/**
+
+# Set Server port
+#server:
+ # port: ${PORT:9000}
+  
+# Information about Eureka Server
+eureka:         #tells about the Eureka server details and its refresh time
+  instance:
+    leaseRenewalIntervalInSeconds: 1
+    leaseExpirationDurationInSeconds: 2
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.1:8761/eureka/
+      healthcheck:
+        enabled: true
+      lease:
+        duration: 5
+      
+management:
+  security:
+    enabled: false  #disable the spring security on the management endpoints like /env, /refresh etc.
