@@ -19,9 +19,12 @@ spring:
       - dev
   cloud:    # Enable discovery of config service by service id
     config:
+      override-system-properties: false
       discovery: 
         enabled: true
         service-id: config
+
+      
         
 management:
   security:

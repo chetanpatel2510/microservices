@@ -1,3 +1,8 @@
+# IMPORTANT: Put Config Server configurations in bootstrap.yml instead of application.yml. 
+# application.yml is scanned by clients and override their properties. 
+# Currently this is not resolved.
+
+
 # Set Application Name
 spring:
   application:

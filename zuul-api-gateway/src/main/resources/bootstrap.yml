@@ -1,0 +1,29 @@
+# Set Application Name
+spring:
+  application:
+    name: zuul-api-gateway
+  profiles: # Enable active profiles (It is list of profiles)
+    active:
+      - dev  
+  
+    
+# Set Server port
+server:
+  port: ${PORT:9000}
+  
+# Information about Eureka Server
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.1:8761/eureka/
+
+zuul:
+  #Service will be mapped under the /api URI
+  routes:
+    product-service:
+      path: /product-service/**
+      service-id: product-service
+      #url: http://localhost:8082/  # Always search by service id and do not use url. url need host and port number to be hard coded.
+      
+        
+         
