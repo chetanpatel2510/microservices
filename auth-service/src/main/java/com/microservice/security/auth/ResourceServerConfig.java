@@ -24,13 +24,23 @@ public class ResourceServerConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.parentAuthenticationManager(authenticationManager).inMemoryAuthentication().withUser("chetan")
-				.password("chetan").roles("ADMIN");
+		auth.parentAuthenticationManager(authenticationManager).inMemoryAuthentication().withUser("Chetan")
+				.password("Patel").roles("USER").and().withUser("Dhara").password("Patel").roles("ADMIN");
 	}
 
 	@Override
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
-		httpSecurity.requestMatchers().antMatchers("/login", "/oauth/authorize").and().authorizeRequests().anyRequest()
-				.authenticated().and().formLogin().permitAll();
+		httpSecurity.requestMatchers().antMatchers("/login", "/oauth/authorize").and().httpBasic().and()
+				.authorizeRequests().anyRequest().authenticated();
+		
+		/*httpSecurity
+
+        .authorizeRequests()
+
+        .antMatchers("/").permitAll()
+
+        .antMatchers("/private/**").authenticated();
+*/		
+		httpSecurity.csrf().disable();
 	}
 }

@@ -23,8 +23,15 @@ spring:
       discovery: 
         enabled: true
         service-id: config
-
+  session:
+    store-type: redis
+    redis:
+      flush-mode: immediate
+      namespace: product-service
       
+  redis:
+    host: localhost
+    port: 6379  
         
 management:
   security:
@@ -33,4 +40,14 @@ management:
 logging:
   level:
     com.microservice: DEBUG
+    
+security:
+  oauth2:
+    client:
+      client-id: ClientId
+      client-secret: secret
+      access-token-uri: http://localhost:9000/security-service/auth/oauth/token
+      user-authorization-uri: http://localhost:9000/security-service/auth/oauth/authorize
+    resource:
+      user-info-uri: http://localhost:9000/security-service/auth/principal    
   

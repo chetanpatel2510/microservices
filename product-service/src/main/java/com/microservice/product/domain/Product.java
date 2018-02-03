@@ -1,5 +1,6 @@
 package com.microservice.product.domain;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 import javax.persistence.Column;
@@ -11,7 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "PRODUCT")
-public class Product {
+public class Product implements Serializable {
 
 	/**
 	 * id declaration.
@@ -24,25 +25,25 @@ public class Product {
 	/**
 	 * name declaration.
 	 */
-	@Column(name = "PROD_NAME")
+	@Column(name = "PRODUCT_NAME")
 	private String name;
 
 	/**
 	 * description declaration.
 	 */
-	@Column(name = "PROD_DESC")
+	@Column(name = "PRODUCT_DESC")
 	private String description;
 
 	/**
 	 * sku declaration.
 	 */
-	@Column(name = "PROD_CODE")
+	@Column(name = "PRODUCT_CODE")
 	private String code;
 
 	/**
 	 * price declaration.
 	 */
-	@Column(name = "PROD_PRICE")
+	@Column(name = "PRODUCT_PRICE")
 	private BigDecimal price;
 
 	/**
