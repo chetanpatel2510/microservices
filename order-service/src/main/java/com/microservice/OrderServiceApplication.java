@@ -1,5 +1,6 @@
 package com.microservice;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -32,6 +33,9 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class OrderServiceApplication {
 
+	@Value("${product.name}")
+	private String productName;
+	
 	public static void main(String[] args) {
 		SpringApplication.run(OrderServiceApplication.class, args);
 	}
@@ -67,7 +71,7 @@ public class OrderServiceApplication {
 
 	@GetMapping("/hello/{name}")
 	public String hello(@PathVariable String name) {
-		return "Hello " + name;
+		return "Hello " + name + productName;
 	}
 
 	@PostMapping("/login")

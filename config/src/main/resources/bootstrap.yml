@@ -17,12 +17,12 @@ spring:
       enabled: true
       server:
         git:
-          search-paths:
-          - /config/**
+          search-paths: 
+            - /config/**
           uri: https://github.com/chetanpatel2510/microservices
-        native:
-          search-locations:
-            -classpath:/**
+        #native:
+         # search-locations:
+          #  file:///Workspace/microservices/config/src/main/resources/configurations/product-service/dev
 
 # Set Server port
 #server:
@@ -35,7 +35,7 @@ eureka:         #tells about the Eureka server details and its refresh time
     leaseExpirationDurationInSeconds: 2
   client:
     serviceUrl:
-      defaultZone: http://127.0.0.1:8761/eureka/
+      defaultZone: http://127.0.0.1:8762/eureka/
       healthcheck:
         enabled: true
       lease:

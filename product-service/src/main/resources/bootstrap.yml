@@ -8,7 +8,7 @@ eureka:         #tells about the Eureka server details and its refresh time
     leaseExpirationDurationInSeconds: 2
   client:
     serviceUrl:
-      defaultZone: http://127.0.0.1:8761/eureka/
+      defaultZone: http://127.0.0.1:8762/eureka/
   
 # Set Application Name
 spring:
@@ -20,6 +20,7 @@ spring:
   cloud:    # Enable discovery of config service by service id
     config:
       override-system-properties: false
+      profile: dev, environment-dev
       discovery: 
         enabled: true
         service-id: config
