@@ -1,0 +1,28 @@
+# Set Application Name
+spring:
+  application:
+    name: order-service
+  profiles: # Enable active profiles (It is list of profiles)
+    active:
+      - dev
+  cloud:    # Enable discovery of config service by service id
+    config:
+      override-system-properties: false
+      profile: dev, environment-dev
+      discovery: 
+        enabled: true
+        service-id: config  
+        
+eureka:         #tells about the Eureka server details and its refresh time
+  instance:
+    leaseRenewalIntervalInSeconds: 1
+    leaseExpirationDurationInSeconds: 2
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.1:8762/eureka/        
+    
+# Set Server port
+server:
+  port: 8081
+  
+  
