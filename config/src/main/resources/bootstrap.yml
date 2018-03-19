@@ -25,8 +25,8 @@ spring:
           #  file:///Workspace/microservices/config/src/main/resources/configurations/product-service/dev
 
 # Set Server port
-#server:
- # port: ${PORT:9000}
+server:
+  port: ${PORT:9000}
   
 # Information about Eureka Server
 eureka:         #tells about the Eureka server details and its refresh time
