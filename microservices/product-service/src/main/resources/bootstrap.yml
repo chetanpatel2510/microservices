@@ -1,0 +1,54 @@
+# Set Server port
+server:
+  port: ${PORT:8082}
+  
+eureka:         #tells about the Eureka server details and its refresh time
+  instance:
+    leaseRenewalIntervalInSeconds: 1
+    leaseExpirationDurationInSeconds: 2
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.1:8762/eureka/
+  
+# Set Application Name
+spring:
+  application:
+    name: product-service
+  profiles: # Enable active profiles (It is list of profiles)
+    active:
+      - dev
+  cloud:    # Enable discovery of config service by service id
+    config:
+      override-system-properties: false
+      profile: dev, environment-dev
+      discovery: 
+        enabled: true
+        service-id: config
+  session:
+    store-type: redis
+    redis:
+      flush-mode: immediate
+      namespace: product-service
+      
+  redis:
+    host: localhost
+    port: 6379  
+        
+management:
+  security:
+    enabled: false  #disable the spring security on the management endpoints like /env, /refresh etc.
+ 
+logging:
+  level:
+    com.microservice: DEBUG
+    
+security:
+  oauth2:
+    client:
+      client-id: ClientId
+      client-secret: secret
+      access-token-uri: http://localhost:9000/security-service/auth/oauth/token
+      user-authorization-uri: http://localhost:9000/security-service/auth/oauth/authorize
+    resource:
+      user-info-uri: http://localhost:9000/security-service/auth/principal    
+  
