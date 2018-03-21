@@ -23,6 +23,7 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 		<spring-cloud.version>Dalston.SR4</spring-cloud.version>
+		<docker.registry>https://hub.docker.com/r/techiechetan/microservices/</docker.registry>
 	</properties>
 
 	<dependencies>
@@ -55,10 +56,35 @@
 	</dependencyManagement>
 
 	<build>
+		<!-- <finalName>eureka-server.jar</finalName> -->
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			
+			<plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<version>0.4.10</version>
+				<executions>
+					<execution>
+						<id>build-image</id>
+						<phase>package</phase>
+						<goals>
+							<goal>build</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<serverId>docker-hub</serverId>
+					<imageName>techiechetan/eureka-server:latest</imageName>
+					<dockerDirectory>${project.basedir}/</dockerDirectory>
+					<imageTags>
+						<imageTag>latest</imageTag>
+					</imageTags>
+					<dockerHost>https://hub.docker.com/r/techiechetan/microservices/</dockerHost>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
