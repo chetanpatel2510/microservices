@@ -83,7 +83,6 @@
 					<imageTags>
 						<imageTag>latest</imageTag>
 					</imageTags>
-					<dockerHost>https://hub.docker.com/r/techiechetan/microservices/</dockerHost>
 				</configuration>
 			</plugin>
 		</plugins>
