@@ -55,8 +55,8 @@
 		</dependencies>
 	</dependencyManagement>
 
-	<build>
-		<!-- <finalName>eureka-server.jar</finalName> -->
+	<!-- <build>
+		<!-- <finalName>eureka-server.jar</finalName> 
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -86,7 +86,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
-	</build>
+	</build>-->
 
 
 </project>
