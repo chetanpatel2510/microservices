@@ -55,15 +55,15 @@
 		</dependencies>
 	</dependencyManagement>
 
-	<!-- <build>
-		 <finalName>eureka-server.jar</finalName> 
+	<build>
+		<!--  <finalName>eureka-server.jar</finalName> -->
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 			
-			<plugin>
+			<!-- <plugin>
 				<groupId>com.spotify</groupId>
 				<artifactId>docker-maven-plugin</artifactId>
 				<version>0.4.10</version>
@@ -84,9 +84,9 @@
 						<imageTag>latest</imageTag>
 					</imageTags>
 				</configuration>
-			</plugin>
+			</plugin>-->
 		</plugins>
-	</build>-->
+	</build>
 
 
 </project>
