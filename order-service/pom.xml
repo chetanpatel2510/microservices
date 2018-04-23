@@ -73,6 +73,28 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<version>0.4.10</version>
+				<executions>
+					<execution>
+						<id>build-image</id>
+						<phase>package</phase>
+						<goals>
+							<goal>build</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<serverId>docker-hub</serverId>
+					<imageName>techiechetan/order-service:latest</imageName>
+					<dockerDirectory>${project.basedir}/</dockerDirectory>
+					<imageTags>
+						<imageTag>latest</imageTag>
+					</imageTags>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 

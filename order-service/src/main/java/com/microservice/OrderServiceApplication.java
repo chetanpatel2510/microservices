@@ -1,13 +1,15 @@
 package com.microservice;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
@@ -27,14 +29,14 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  * @author Chetan
  *
  */
-// @EnableEurekaClient
+@EnableEurekaClient
 @RestController
 @SpringBootApplication
 @EnableSwagger2
 public class OrderServiceApplication {
 
-	@Value("${product.name}")
-	private String productName;
+//	@Value("${product.name}")
+//	private String productName;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(OrderServiceApplication.class, args);
@@ -46,6 +48,13 @@ public class OrderServiceApplication {
 				.paths(PathSelectors.any()).build();
 	}
 
+	
+	@Bean 
+	@LoadBalanced
+	public RestTemplate getRestTemplate() {
+		return new RestTemplate();
+	}
+	
 	@Bean
 	public CorsFilter corsFilter() {
 		final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
@@ -67,11 +76,6 @@ public class OrderServiceApplication {
 	@PostMapping("/createOrder")
 	public Order createOrder(Order order) {
 		return order;
-	}
-
-	@GetMapping("/hello/{name}")
-	public String hello(@PathVariable String name) {
-		return "Hello " + name + productName;
 	}
 
 	@PostMapping("/login")
