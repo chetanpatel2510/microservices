@@ -1,1 +1,12 @@
-
+#This is docker compose file for shopping cart micorservice architecture. All the microservices should be kept in this docker compose.
+services:
+	eureka:
+		build: eureka
+		image: eureka/latest
+		ports:
+			- "8762:8762"
+	config:
+		build: config
+		image: config/latest
+		ports:
+			- "9001:9001"
